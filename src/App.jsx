@@ -6,11 +6,11 @@ function App() {
 
   console.log(loading);
 
-  return (
+  return !loading ? (
     <div>
       <h1>Loading...</h1>
     </div>
-  );
+  ) : null;
 }
 
 export default App;
