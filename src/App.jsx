@@ -1,11 +1,15 @@
-import { useState } from "react";
-import "./App.css";
+import react from "react";
+import { useLoader } from "./hooks";
 
 function App() {
+  const loading = useLoader();
+
+  console.log(loading);
+
   return (
-    <>
-      <h1>Blog App</h1>
-    </>
+    <div>
+      <h1>Loading...</h1>
+    </div>
   );
 }
 
