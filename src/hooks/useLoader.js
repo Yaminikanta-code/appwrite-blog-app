@@ -28,7 +28,6 @@ function useLoader() {
         setLoading(false);
       });
   }, []);
-  console.log(loading);
 
   return loading;
 }
