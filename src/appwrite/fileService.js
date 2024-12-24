@@ -8,6 +8,10 @@ export class FileService {
   databases;
   bucket;
 
+  /**
+   * Creates a new instance of the FileService class.
+   * @throws {Error} - If Appwrite configuration is incomplete.
+   */
   constructor() {
     if (!appwriteUrl || !appwriteProjectId || !appwriteBucketId) {
       throw new Error(
@@ -20,6 +24,13 @@ export class FileService {
     this.bucket = new Storage(this.client);
   }
 
+  /**
+   * Validates a file against a set of rules.
+   * @param {File} file The file to validate.
+   * @param {string[]} [allowedTypes=["image/png", "image/jpeg"]] A list of allowed MIME types.
+   * @param {number} [maxSize=5 * 1024 * 1024] The maximum allowed file size in bytes.
+   * @throws {Error} If the file type is not in the allowed list or if the file size exceeds the maximum limit.
+   */
   validateFile(
     file,
     allowedTypes = ["image/png", "image/jpeg"],
@@ -33,6 +44,12 @@ export class FileService {
     }
   }
 
+  /**
+   * Uploads a file to the Appwrite storage bucket after validation.
+   * @param {File} file - The file to be uploaded.
+   * @returns {Promise<Object>} A promise that resolves to the uploaded file object.
+   * @throws {Error} If file validation fails or if there is an error during upload.
+   */
   async uploadFile(file) {
     try {
       this.validateFile(file); // Validate file before upload
@@ -44,6 +61,12 @@ export class FileService {
     }
   }
 
+  /**
+   * Deletes a file from the Appwrite storage bucket.
+   * @param {string} fileId The ID of the file to be deleted.
+   * @returns {Promise<boolean>} A promise that resolves to true if the file was deleted successfully, false otherwise.
+   * @throws {Error} If there is an error during deletion.
+   */
   async deleteFile(fileId) {
     try {
       console.log("Deleting file with ID:", fileId);
@@ -56,6 +79,12 @@ export class FileService {
     }
   }
 
+  /**
+   * Retrieves a preview of a file from the Appwrite storage bucket.
+   * @param {string} fileId The ID of the file for which to retrieve the preview.
+   * @returns {Promise<string>} A promise that resolves to the URL of the file preview.
+   * @throws {Error} If there is an error during retrieval.
+   */
   getFilePreview(fileId) {
     try {
       console.log("Fetching preview for file ID:", fileId);
