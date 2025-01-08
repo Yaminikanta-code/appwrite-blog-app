@@ -1,6 +1,6 @@
 import react from "react";
 import { useLoader } from "./hooks";
-import { Footer } from "./components";
+import { Footer, Header } from "./components";
 function App() {
   const loading = useLoader();
 
