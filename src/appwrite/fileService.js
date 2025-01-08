@@ -87,7 +87,7 @@ export class FileService {
    */
   getFilePreview(fileId) {
     try {
-      console.log("Fetching preview for file ID:", fileId);
+      //console.log("Fetching preview for file ID:", fileId);
       return this.bucket.getFilePreview(appwriteBucketId, fileId);
     } catch (error) {
       console.error("Appwrite service :: getFilePreview :: error", error);
