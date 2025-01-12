@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function useAuthStatus() {
+function useAuthStatus(authentication) {
   const navigate = useNavigate();
   const authStaus = useSelector((state) => state.auth.status);
   const [loader, setLoader] = useState(true);
