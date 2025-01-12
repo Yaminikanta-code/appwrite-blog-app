@@ -7,9 +7,9 @@ const Input = forwardRef(function Input(
 ) {
   const id = useId();
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col">
       {lable && (
-        <label className="inline-block mb-2 pl-2" htmlFor={id}>
+        <label className="inline-block mb-2 pl-2 text-sm" htmlFor={id}>
           {lable}
         </label>
       )}

@@ -1,3 +1,4 @@
 import useLoader from "./useLoader";
+import useAuthStatus from "./useAuthStatus";
 
-export { useLoader };
+export { useLoader, useAuthStatus };

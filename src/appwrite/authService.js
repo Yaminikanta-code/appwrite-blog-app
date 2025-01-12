@@ -37,7 +37,7 @@ export class AuthService {
    */
   async createAccount({ email, password, name }) {
     try {
-      console.log(`Creating account for ${email}`);
+      //console.log(`Creating account for ${email}`);
       const userAccount = await this.account.create(
         ID.unique(),
         email,
@@ -45,11 +45,11 @@ export class AuthService {
         name
       );
       if (userAccount) {
-        console.log("Account created successfully, logging in...");
+        // console.log("Account created successfully, logging in...");
         const loginResponse = await this.login({ email, password });
         return loginResponse;
       } else {
-        console.log("Account creation failed");
+        //console.log("Account creation failed");
         return null;
       }
     } catch (error) {
@@ -71,10 +71,10 @@ export class AuthService {
    */
   async login({ email, password }) {
     try {
-      console.log(`Logging in with ${email}`);
+      //console.log(`Logging in with ${email}`);
       return await this.account.createEmailPasswordSession(email, password);
     } catch (error) {
-      console.error("Error during login:", error);
+      //console.error("Error during login:", error);
       throw error;
     }
   }
