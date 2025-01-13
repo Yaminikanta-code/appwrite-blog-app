@@ -10,6 +10,7 @@ import Select from "./Select";
 import Login from "./authentication/Login";
 import Signup from "./authentication/Signup";
 import AuthGuard from "./authentication/AuthGuard";
+import RTE from "./post-form/RTE";
 
 export {
   Footer,
@@ -24,4 +25,5 @@ export {
   AuthGuard,
   PostCard,
   Select,
+  RTE,
 };

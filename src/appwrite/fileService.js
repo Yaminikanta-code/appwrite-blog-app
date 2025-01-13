@@ -69,9 +69,9 @@ export class FileService {
    */
   async deleteFile(fileId) {
     try {
-      console.log("Deleting file with ID:", fileId);
+      //console.log("Deleting file with ID:", fileId);
       await this.bucket.deleteFile(appwriteBucketId, fileId);
-      console.log("File deleted successfully:", fileId);
+      //console.log("File deleted successfully:", fileId);
       return true;
     } catch (error) {
       console.error("Appwrite service :: deleteFile :: error", error);

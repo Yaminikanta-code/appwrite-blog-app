@@ -70,7 +70,7 @@ export class Service {
    */
   async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
-      console.log(`Creating post with slug: ${slug}`);
+      //console.log(`Creating post with slug: ${slug}`);
       const isUnique = await this.isSlugUnique(slug);
       if (!isUnique) throw new Error("Slug must be unique.");
 
@@ -100,7 +100,7 @@ export class Service {
    */
   async updatePost(slug, { title, content, featuredImage, status }) {
     try {
-      console.log(`Updating post with slug: ${slug}`);
+      //console.log(`Updating post with slug: ${slug}`);
       return await this.databases.updateDocument(
         appwriteDatabaseId,
         appwriteCollectionId,
