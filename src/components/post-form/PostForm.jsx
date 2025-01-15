@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 function PostForm({ post }) {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  //console.log("userData", userData.userData.$id);
   const { register, handleSubmit, watch, setValue, control, getValues } =
     useForm({
       defaultValues: {
@@ -40,10 +41,12 @@ function PostForm({ post }) {
 
       if (file) {
         const fileId = file.$id;
+        console.log(fileId);
         data.featuredImage = fileId;
+        console.log(data);
         const dbPost = await service.createPost({
           ...data,
-          userId: userData.$id,
+          userId: userData.userData.$id,
         });
 
         if (dbPost) {
@@ -73,6 +76,7 @@ function PostForm({ post }) {
 
     return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
+  console.log(post);
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
@@ -112,7 +116,7 @@ function PostForm({ post }) {
         {post && (
           <div className="w-full mb-4">
             <img
-              src={appwriteService.getFilePreview(post.featuredImage)}
+              src={fileService.getFilePreview(post.featuredImage)}
               alt={post.title}
               className="rounded-lg"
             />

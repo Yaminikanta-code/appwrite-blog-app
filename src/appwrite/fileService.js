@@ -1,11 +1,11 @@
 import config from "../config/config";
-import { Client, ID, Databases, Storage } from "appwrite";
+import { Client, ID, Storage } from "appwrite";
 
 const { appwriteUrl, appwriteProjectId, appwriteBucketId } = config;
 
 export class FileService {
   client = new Client();
-  databases;
+
   bucket;
 
   /**
@@ -20,7 +20,7 @@ export class FileService {
     }
 
     this.client.setEndpoint(appwriteUrl).setProject(appwriteProjectId);
-    this.databases = new Databases(this.client);
+
     this.bucket = new Storage(this.client);
   }
 

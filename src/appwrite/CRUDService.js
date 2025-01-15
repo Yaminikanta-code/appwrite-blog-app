@@ -69,10 +69,9 @@ export class Service {
    * @throws Will throw an error if the slug is not unique or if the document creation fails.
    */
   async createPost({ title, slug, content, featuredImage, status, userId }) {
+    //console.log("ID", userId);
     try {
       //console.log(`Creating post with slug: ${slug}`);
-      const isUnique = await this.isSlugUnique(slug);
-      if (!isUnique) throw new Error("Slug must be unique.");
 
       return await this.databases.createDocument(
         appwriteDatabaseId,
@@ -122,7 +121,7 @@ export class Service {
    */
   async deletePost(slug) {
     try {
-      console.log(`Deleting post with slug: ${slug}`);
+      //console.log(`Deleting post with slug: ${slug}`);
       await this.databases.deleteDocument(
         appwriteDatabaseId,
         appwriteCollectionId,

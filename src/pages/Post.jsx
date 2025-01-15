@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { service as appwriteService } from "../appwrite";
+import { service as appwriteService, fileService } from "../appwrite";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
@@ -12,7 +12,9 @@ export default function Post() {
 
   const userData = useSelector((state) => state.auth.userData);
 
-  const isAuthor = post && userData ? post.userId === userData.$id : false;
+  const isAuthor =
+    post && userData ? post.userId === userData.userData.$id : false;
+  console.log(isAuthor);
 
   useEffect(() => {
     if (slug) {
@@ -33,11 +35,11 @@ export default function Post() {
   };
 
   return post ? (
-    <div className="py-8">
+    <div className="py-8 bg-white">
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <img
-            src={appwriteService.getFilePreview(post.featuredImage)}
+            src={fileService.getFilePreview(post.featuredImage)}
             alt={post.title}
             className="rounded-xl"
           />

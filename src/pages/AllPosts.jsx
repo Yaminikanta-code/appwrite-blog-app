@@ -4,13 +4,15 @@ import { PostCard, Container } from "../components";
 import { set } from "react-hook-form";
 
 function AllPosts() {
-  cosnt[(posts, setPosts)] = useState([]);
-  useEffect(() => {}, []);
-  service.getPosts([]).then((response) => {
-    if (response) {
-      setPosts(response.documents);
-    }
-  });
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    service.getPosts().then((response) => {
+      if (response) {
+        setPosts(response.documents);
+      }
+    });
+  }, []);
+  //console.log(posts);
   return (
     <div className="w-full py-8">
       <Container>
@@ -21,6 +23,7 @@ function AllPosts() {
               $id={post.$id}
               title={post.title}
               featuredImage={post.featuredImage}
+              content={post.content}
             />
           ))}
         </div>

@@ -1,15 +1,21 @@
 import react from "react";
 import { useLoader } from "./hooks";
 import { Footer, Header } from "./components";
+import { Outlet } from "react-router-dom";
 function App() {
   const loading = useLoader();
 
-  console.log(loading);
+  //console.log(loading);
 
   return !loading ? (
-    <div>
-      <h1>Loading...</h1>
-      <Footer />
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
+      <div className="w-full block">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   ) : null;
 }
