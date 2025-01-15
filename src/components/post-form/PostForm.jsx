@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 function PostForm({ post }) {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
-  //console.log("userData", userData.userData.$id);
+  console.log("userData", userData.userData.$id);
   const { register, handleSubmit, watch, setValue, control, getValues } =
     useForm({
       defaultValues: {
@@ -46,7 +46,7 @@ function PostForm({ post }) {
         console.log(data);
         const dbPost = await service.createPost({
           ...data,
-          userId: userData.userData.$id,
+          userId: userData?.userData?.$id,
         });
 
         if (dbPost) {

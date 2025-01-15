@@ -36,26 +36,24 @@ export default function Post() {
 
   return post ? (
     <div className="py-8 bg-white">
+      {isAuthor && (
+        <div className="text-right">
+          <Link to={`/edit-post/${post.$id}`}>
+            <i className="fa fa-edit p-4 text-xl md:text-2xl text-green-700 cursor-pointer"></i>
+          </Link>
+          <i
+            className="fa fa-trash p-4 text-xl md:text-2xl text-red-500 cursor-pointer"
+            onClick={deletePost}
+          ></i>
+        </div>
+      )}
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <img
             src={fileService.getFilePreview(post.featuredImage)}
             alt={post.title}
-            className="rounded-xl"
+            className="rounded-xl w-[50%]"
           />
-
-          {isAuthor && (
-            <div className="absolute right-6 top-6">
-              <Link to={`/edit-post/${post.$id}`}>
-                <Button bgColor="bg-green-500" className="mr-3">
-                  Edit
-                </Button>
-              </Link>
-              <Button bgColor="bg-red-500" onClick={deletePost}>
-                Delete
-              </Button>
-            </div>
-          )}
         </div>
         <div className="w-full mb-6">
           <h1 className="text-2xl font-bold">{post.title}</h1>
